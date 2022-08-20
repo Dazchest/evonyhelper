@@ -1,0 +1,67 @@
+
+
+
+[
+    {
+        "materials" : [ 
+            {
+                "name": "Purple Crystal",
+                "id": 0
+            },
+            {
+                "name": "Blue Stone",
+                "id": 1
+            },
+            {
+                "name": "Red Argate",
+                "id": 2
+            }
+        ]
+    },
+    {
+        "equipment" : [
+            {
+                "ring" : [
+                    {
+                        "name": "Easy Ring",
+                        "requipments" : {
+                            "0": 30,
+                            "1": 40
+                        },
+                        "archer attack": 20,
+                        "cavalry hp": 25
+                    },
+                    {
+                        "name": "Medium Ring",
+                        "requipments" : {
+                            "0": 30,
+                            "1": 40
+                        }
+                    }
+
+                ]
+            },
+            {
+                "bow" : [
+                    {
+                        "name": "Easy Bow",
+                        "requipments" : {
+                            "0": 40,
+                            "2": 30
+                        }
+                    },
+                    {
+                        "name": "Medium Bow",
+                        "requipments" : {
+                            "0": 40,
+                            "1": 30
+                        }
+                    }
+
+                ]
+            }
+
+        ]
+    }
+
+]

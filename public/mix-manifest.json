@@ -1,0 +1,11 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/components/accounts.js": "/js/components/accounts.js",
+    "/js/components/buildings.js": "/js/components/buildings.js",
+    "/js/components/consumption.js": "/js/components/consumption.js",
+    "/js/components/helpersMain.js": "/js/components/helpersMain.js",
+    "/js/components/resources2.js": "/js/components/resources2.js",
+    "/js/components/speeds.js": "/js/components/speeds.js",
+    "/js/components/troopResCalc.js": "/js/components/troopResCalc.js"
+}
