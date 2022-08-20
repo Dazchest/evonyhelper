@@ -11,5 +11,4 @@
 
     @endforeach
 @endforeach --}}
-helloddd
 <script src=" {{asset('js/components/troopResCalc.js')}} " defer></script>
