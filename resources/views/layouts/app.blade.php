@@ -18,9 +18,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/appd.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>dd
+<body>
     <div id="app" class="container">
 
         {{-- <nav class="navbar navbar-light light-blue lighten-4"> --}}
