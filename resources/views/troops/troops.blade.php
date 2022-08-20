@@ -11,5 +11,5 @@
 
     @endforeach
 @endforeach --}}
-
+hello
 <script src=" {{asset('js/components/troopResCalc.js')}} " defer></script>
