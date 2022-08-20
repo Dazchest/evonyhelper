@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body>dd
     <div id="app" class="container">
 
         {{-- <nav class="navbar navbar-light light-blue lighten-4"> --}}
