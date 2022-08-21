@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <h1>Evony Helper</h1>
+    <h1>Evony Helper...</h1>
     <div id="app" class="container">
 
         {{-- <nav class="navbar navbar-light light-blue lighten-4"> --}}
