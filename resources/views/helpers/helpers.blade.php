@@ -5,4 +5,4 @@
 @endsection
 
 
-<script src="{{ asset('js/components/helpersMain.js') }}" defer>
+<script src="{{ asset('js/components/helpersMain.js') }}" defer></script>
