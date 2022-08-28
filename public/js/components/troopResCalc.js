@@ -32494,13 +32494,13 @@ var saveValuesHelper = {
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var url, data, _ref$saveDelay, saveDelay, _ref$method, method, _ref$logResponse, logResponse, _ref$loggedIn, loggedIn;
+      var url, data, _ref$saveDelay, saveDelay, _ref$method, method, callback, _ref$logResponse, logResponse, _ref$loggedIn, loggedIn;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              url = _ref.url, data = _ref.data, _ref$saveDelay = _ref.saveDelay, saveDelay = _ref$saveDelay === void 0 ? 1500 : _ref$saveDelay, _ref$method = _ref.method, method = _ref$method === void 0 ? 'get' : _ref$method, _ref$logResponse = _ref.logResponse, logResponse = _ref$logResponse === void 0 ? true : _ref$logResponse, _ref$loggedIn = _ref.loggedIn, loggedIn = _ref$loggedIn === void 0 ? false : _ref$loggedIn;
+              url = _ref.url, data = _ref.data, _ref$saveDelay = _ref.saveDelay, saveDelay = _ref$saveDelay === void 0 ? 1500 : _ref$saveDelay, _ref$method = _ref.method, method = _ref$method === void 0 ? 'get' : _ref$method, callback = _ref.callback, _ref$logResponse = _ref.logResponse, logResponse = _ref$logResponse === void 0 ? true : _ref$logResponse, _ref$loggedIn = _ref.loggedIn, loggedIn = _ref$loggedIn === void 0 ? false : _ref$loggedIn;
 
               if (loggedIn) {
                 _context.next = 5;
@@ -32530,7 +32530,11 @@ var saveValuesHelper = {
                   data: data
                 }).then(function (response) {
                   if (logResponse) {
-                    console.log("saved  .........", response.data);
+                    console.log("saved  ......", response.data);
+
+                    if (callback) {
+                      callback(response.data);
+                    }
                   }
                 })["catch"](function (error) {
                   console.log("error message = ", error.message);

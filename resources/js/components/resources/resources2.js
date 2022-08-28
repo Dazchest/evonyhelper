@@ -107,7 +107,7 @@ class Resources extends Component {
                 data: this.state.resData,
                 saveDelay: 2000,
                 loggedIn: this.state.currentAc ? true : false,
-            }).then(res => {console.log(res)});
+            }).then(res => {console.log("res", res)});
         });
     }
 

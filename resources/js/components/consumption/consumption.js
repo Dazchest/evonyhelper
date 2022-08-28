@@ -58,7 +58,7 @@ class Consumption extends Component {
         getAccounts().then(async (acData) => {
             // const bob = async () => {
         console.log("acdata", acData);
-        console.log("123");
+        console.log("123123");
             if(acData.length) {
                 this.setState({acData: acData});
                 this.setState({currentAc : acData[0].id})

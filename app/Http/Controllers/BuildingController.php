@@ -375,8 +375,6 @@ class BuildingController extends Controller
     public function update(Request $request, Building $building)
     {
         $data = $request->input('data');
-        // $building = Building::find($data['id']);
-        // $building = Building::firstOrNew([$data['id']]);
         $building = Building::firstOrNew(['type'=>$data['type'], 'level'=>$data['level']]);
         $building->type = $data['type'];
         $building->level = $data['level'];
@@ -385,7 +383,7 @@ class BuildingController extends Controller
         $building->wood = $data['wood'];
         $building->stone = $data['stone'];
         $building->iron = $data['iron'];
-        $building->time = $data['time'];
+        $building->time = isset($data['time']) ? $data['time'] : 0;
         $building->save();
         return $building;
     }

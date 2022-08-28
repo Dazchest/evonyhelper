@@ -337,10 +337,10 @@ export const EditCell = (props) => {
  * 
  * if data contains any iformation, then the method wil auatomatically be POST
  */
-export  const  saveValuesHelper = 
+export const saveValuesHelper = 
 {
     sav: null,
-    async save({url, data, saveDelay=1500, method='get', logResponse=true, loggedIn=false}) {
+    async save({url, data, saveDelay=1500, method='get', callback, logResponse=true, loggedIn=false}) {
         if(!loggedIn) {
             // popup("error", "", "Please log in to save");
             // console.log("toast 1")
@@ -359,7 +359,10 @@ export  const  saveValuesHelper =
             axios[method](url, { data })
                 .then(response => {
                     if(logResponse) {
-                        console.log("saved  .........", response.data);
+                        console.log("saved  ......", response.data);
+                        if(callback) {
+                            callback(response.data);
+                        }
                     }
                 })
                 .catch(error => {

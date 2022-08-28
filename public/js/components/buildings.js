@@ -32272,6 +32272,11 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "updateBuild",
+    value: function updateBuild(e) {
+      console.log("will this get called???", e);
+    }
+  }, {
     key: "handleChangeValue",
     value: function handleChangeValue(e) {
       var _this3 = this;
@@ -32291,12 +32296,15 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
                 console.log(_this3.state.buildingValues[row]);
                 _context2.next = 3;
                 return _helpers__WEBPACK_IMPORTED_MODULE_3__["saveValuesHelper"].save({
+                  callback: _this3.updateBuild,
                   url: "buildings/updatevalues",
                   data: _this3.state.buildingValues[row],
                   method: "get",
                   saveDelay: 1000,
                   loggedIn: true // logResponse: false,
 
+                }).then(function (e) {
+                  console.log("saveResponse ", e);
                 });
 
               case 3:
@@ -32323,14 +32331,28 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
       // return;
       this.newBuilding.type = this.state.currentType;
       this.newBuilding.name = this.state.buildingValues[this.state.currentIndex].name;
-      _helpers__WEBPACK_IMPORTED_MODULE_3__["saveValuesHelper"].save({
+      var saveResponse = _helpers__WEBPACK_IMPORTED_MODULE_3__["saveValuesHelper"].save({
         url: "buildings/updatevalues",
         data: this.newBuilding,
         method: "get",
+        callback: this.addNewBuildToList.bind(this),
         saveDelay: 1000,
         loggedIn: true // logResponse: false,
 
       });
+      console.log(saveResponse);
+    }
+  }, {
+    key: "addNewBuildToList",
+    value: function addNewBuildToList(building) {
+      console.log(this.state.buildingValues);
+      console.log("will this get called??? saving");
+      this.getBuildingData(this.state.currentType);
+      var toClear = document.querySelectorAll('[row="z"]');
+      toClear.forEach(function (element) {
+        element.innerHTML = 0;
+      });
+      console.log(toClear);
     } // saveValues(data, saveDelay=1500) {
     //     if(this.bob) {
     //         clearTimeout(this.bob);
@@ -32408,7 +32430,7 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
         }));
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_helpers__WEBPACK_IMPORTED_MODULE_3__["EditCell"], {
         type: "number",
-        row: "36",
+        row: "z",
         col: "level",
         value: 0,
         originalValue: 0,
@@ -32417,7 +32439,7 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_helpers__WEBPACK_IMPORTED_MODULE_3__["EditCell"], {
         type: "number",
-        row: "36",
+        row: "z",
         col: "food",
         value: 0,
         originalValue: 0,
@@ -32426,7 +32448,7 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_helpers__WEBPACK_IMPORTED_MODULE_3__["EditCell"], {
         type: "number",
-        row: "36",
+        row: "z",
         col: "wood",
         value: 0,
         originalValue: 0,
@@ -32435,7 +32457,7 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_helpers__WEBPACK_IMPORTED_MODULE_3__["EditCell"], {
         type: "number",
-        row: "36",
+        row: "z",
         col: "stone",
         value: 0,
         originalValue: 0,
@@ -32444,7 +32466,7 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_helpers__WEBPACK_IMPORTED_MODULE_3__["EditCell"], {
         type: "number",
-        row: "36",
+        row: "z",
         col: "iron",
         value: 0,
         originalValue: 0,
@@ -32453,7 +32475,7 @@ var UpdateValues = /*#__PURE__*/function (_Component) {
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_helpers__WEBPACK_IMPORTED_MODULE_3__["EditCell"], {
         type: "number",
-        row: "36",
+        row: "z",
         col: "time",
         value: 0,
         originalValue: 0,
@@ -32984,13 +33006,13 @@ var saveValuesHelper = {
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var url, data, _ref$saveDelay, saveDelay, _ref$method, method, _ref$logResponse, logResponse, _ref$loggedIn, loggedIn;
+      var url, data, _ref$saveDelay, saveDelay, _ref$method, method, callback, _ref$logResponse, logResponse, _ref$loggedIn, loggedIn;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              url = _ref.url, data = _ref.data, _ref$saveDelay = _ref.saveDelay, saveDelay = _ref$saveDelay === void 0 ? 1500 : _ref$saveDelay, _ref$method = _ref.method, method = _ref$method === void 0 ? 'get' : _ref$method, _ref$logResponse = _ref.logResponse, logResponse = _ref$logResponse === void 0 ? true : _ref$logResponse, _ref$loggedIn = _ref.loggedIn, loggedIn = _ref$loggedIn === void 0 ? false : _ref$loggedIn;
+              url = _ref.url, data = _ref.data, _ref$saveDelay = _ref.saveDelay, saveDelay = _ref$saveDelay === void 0 ? 1500 : _ref$saveDelay, _ref$method = _ref.method, method = _ref$method === void 0 ? 'get' : _ref$method, callback = _ref.callback, _ref$logResponse = _ref.logResponse, logResponse = _ref$logResponse === void 0 ? true : _ref$logResponse, _ref$loggedIn = _ref.loggedIn, loggedIn = _ref$loggedIn === void 0 ? false : _ref$loggedIn;
 
               if (loggedIn) {
                 _context.next = 5;
@@ -33020,7 +33042,11 @@ var saveValuesHelper = {
                   data: data
                 }).then(function (response) {
                   if (logResponse) {
-                    console.log("saved  .........", response.data);
+                    console.log("saved  ......", response.data);
+
+                    if (callback) {
+                      callback(response.data);
+                    }
                   }
                 })["catch"](function (error) {
                   console.log("error message = ", error.message);

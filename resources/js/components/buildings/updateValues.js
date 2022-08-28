@@ -62,6 +62,11 @@ export class UpdateValues extends Component {
         this.setState({currentIndex: e.target.selectedIndex});
     }
 
+    updateBuild(e) {
+        console.log("will this get called???", e)
+    }
+
+
     handleChangeValue(e) {
         
         let col = e.target.attributes.col.value;
@@ -75,14 +80,18 @@ export class UpdateValues extends Component {
         this.setState(newState, async () => {
             console.log(this.state.buildingValues[row]);
             await saveValuesHelper.save({
+                callback: this.updateBuild,
                 url: `buildings/updatevalues`, 
                 data: this.state.buildingValues[row], 
                 method: "get",
                 saveDelay: 1000,
                 loggedIn: true,
                 // logResponse: false,
-            })
+            }).then((e) => {
+                console.log("saveResponse ", e)
+            });
         });
+
     }
 
 
@@ -94,24 +103,36 @@ export class UpdateValues extends Component {
 
         console.log(this.newBuilding);
     }
+
     saveNew(e) {
         // console.log("index= ", this.state.currentIndex)
         // console.log(this.state.buildingValues[this.state.currentIndex].name);
         // return;
         this.newBuilding.type = this.state.currentType;
         this.newBuilding.name = this.state.buildingValues[this.state.currentIndex].name;
-        saveValuesHelper.save({
+        let saveResponse = saveValuesHelper.save({
             url: `buildings/updatevalues`, 
             data: this.newBuilding, 
             method: "get",
+            callback: this.addNewBuildToList.bind(this),
             saveDelay: 1000,
             loggedIn: true,
             // logResponse: false,
         });
+        console.log(saveResponse);
     }
 
+    addNewBuildToList(building) {
+        console.log(this.state.buildingValues);
+        console.log("will this get called??? saving");
+        this.getBuildingData(this.state.currentType);
+        let toClear = document.querySelectorAll('[row="z"]');
+        toClear.forEach(element => {
+            element.innerHTML = 0;
+        })
+        console.log(toClear);
+    }
 
-    
     // saveValues(data, saveDelay=1500) {
     //     if(this.bob) {
     //         clearTimeout(this.bob);
@@ -194,7 +215,7 @@ export class UpdateValues extends Component {
                         <tr>
                             <EditCell 
                                 type = "number"
-                                row = '36'
+                                row = 'z'
                                 col = "level"
                                 value = {0}
                                 originalValue = {0}
@@ -202,7 +223,7 @@ export class UpdateValues extends Component {
                             />
                             <EditCell 
                                 type = "number"
-                                row = '36'
+                                row = 'z'
                                 col = "food"
                                 value = {0}
                                 originalValue = {0}
@@ -210,7 +231,7 @@ export class UpdateValues extends Component {
                             />
                             <EditCell 
                                 type = "number"
-                                row = '36'
+                                row = 'z'
                                 col = "wood"
                                 value = {0}
                                 originalValue = {0}
@@ -218,7 +239,7 @@ export class UpdateValues extends Component {
                             />
                             <EditCell 
                                 type = "number"
-                                row = '36'
+                                row = 'z'
                                 col = "stone"
                                 value = {0}
                                 originalValue = {0}
@@ -226,7 +247,7 @@ export class UpdateValues extends Component {
                             />
                             <EditCell 
                                 type = "number"
-                                row = '36'
+                                row = 'z'
                                 col = "iron"
                                 value = {0}
                                 originalValue = {0}
@@ -234,7 +255,7 @@ export class UpdateValues extends Component {
                             />
                             <EditCell 
                                 type = "number"
-                                row = '36'
+                                row = 'z'
                                 col = "time"
                                 value = {0}
                                 originalValue = {0}

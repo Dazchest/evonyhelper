@@ -32,7 +32,7 @@ class Card extends Component {
     render() {
         return (
             <div>
-                hello world {this.state.bob}
+                hello world cardsss {this.state.bob}
                 <CardChild f="hi there" />
 
                 <input value="click me" type="button" onClick={this.handleClick}/>
